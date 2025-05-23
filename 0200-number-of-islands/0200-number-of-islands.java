@@ -1,45 +1,58 @@
+import java.util.*;
+
 class Solution {
-    int[] dr = {0, 0, 1, -1};
-    int[] dc = {1, -1, 0, 0};
+    int[] dr = {0, 0 ,1, -1};
+    int[] dc = { 1, -1, 0 , 0};
+  
 
     public int numIslands(char[][] grid) {
-        int m = grid.length;
-        int n = grid[0].length;
-        boolean[][] visited = new boolean[m][n];
         int count = 0;
+          int m = grid.length;
+ int n = grid[0].length;
+        boolean[][] visited = new boolean[m][n];
 
-        for (int r = 0; r < m; r++) {
-            for (int c = 0; c < n; c++) {
-                if (grid[r][c] == '1' && !visited[r][c]) {
-                    bfs(grid, visited, r, c);
+        for ( int r = 0; r < m; r++) {
+            for (int c = 0;  c< n; c ++) {
+                if(grid[r][c] == '1' && !visited[r][c]) {
+                    bfs(r, c, grid, visited);
                     count++;
                 }
             }
         }
-
         return count;
+
     }
 
-    private void bfs(char[][] grid, boolean[][] visited, int r, int c) {
-        int m = grid.length, n = grid[0].length;
+    private void bfs(int sr, int sc, char[][] grid, boolean[][] visited) {
+          int m = grid.length;
+ int n = grid[0].length;
         Queue<int[]> queue = new LinkedList<>();
-        queue.offer(new int[]{r, c});
-        visited[r][c] = true;
+        queue.offer(new int[]{sr,sc});
+        visited[sr][sc]= true;
 
-        while (!queue.isEmpty()) {
-            int[] cur = queue.poll();
-            int cr = cur[0], cc = cur[1];
+        while(!queue.isEmpty()) {
+            int[] current = queue.poll();
+            int r = current[0];
+            int c = current[1];
 
-            for (int i = 0; i < 4; i++) {
-                int nr = cr + dr[i];
-                int nc = cc + dc[i];
+            for (int i=0; i<4; i++){
+                int nr = r +dr[i];
+                int nc = c + dc[i];
 
-                if (nr >= 0 && nr < m && nc >= 0 && nc < n &&
-                    grid[nr][nc] == '1' && !visited[nr][nc]) {
-                    queue.offer(new int[]{nr, nc});
+                if(isValid(nr,nc,m,n)  && !visited[nr][nc]&& grid[nr][nc]=='1'){
                     visited[nr][nc] = true;
+                    queue.offer(new int[] {nr,nc});
+                    
                 }
             }
+
+
         }
+
     }
+
+    private boolean isValid(int r, int c, int m, int n) {
+        return 0 <= r && r<m &&  0<=c && c<n;
+    }
+
 }
