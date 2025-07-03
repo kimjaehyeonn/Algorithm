@@ -7,6 +7,6 @@ class Solution {
            cur = Math.max(cur, prev+num);
            prev = temp;
         } 
-        return cur
+        return cur;
             }
 }
