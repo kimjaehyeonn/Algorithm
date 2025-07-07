@@ -43,4 +43,12 @@
 |  |
 | ------- |
 | [0200-number-of-islands](https://github.com/kimjaehyeonn/Algorithm/tree/master/0200-number-of-islands) |
+## String
+|  |
+| ------- |
+| [0020-valid-parentheses](https://github.com/kimjaehyeonn/Algorithm/tree/master/0020-valid-parentheses) |
+## Stack
+|  |
+| ------- |
+| [0020-valid-parentheses](https://github.com/kimjaehyeonn/Algorithm/tree/master/0020-valid-parentheses) |
 <!---LeetCode Topics End-->
